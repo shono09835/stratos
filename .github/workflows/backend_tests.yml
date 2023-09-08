@@ -1,0 +1,31 @@
+name: Backend Tests
+
+on:
+  push:
+    branches:
+      - develop
+      - master
+  pull_request:
+
+jobs:
+  test_suite:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21.0'
+
+    - uses: actions/checkout@v2
+
+    - uses: actions/cache@v3
+      with:
+        path: |
+          ./cache
+          ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+
+    - name: Run tests
+      run:  PATH=$GOPATH/bin:$PATH build/bk-build.sh test
