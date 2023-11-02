@@ -1,13 +1,13 @@
 package kubernetes
 
 import (
+	"crypto/x509"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strconv"
-	"strings"
 
 	"errors"
 
@@ -288,7 +288,7 @@ func (c *KubernetesSpecification) RequiresCert(ec echo.Context) error {
 		Message  string
 	}
 	if err != nil {
-		if strings.Contains(err.Error(), "x509: certificate") {
+		if errors.Is(err, new(x509.CertificateInvalidError)) {
 			response.Status = http.StatusOK
 			response.Required = true
 		} else {
