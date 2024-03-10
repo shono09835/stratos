@@ -1,4 +1,4 @@
-name: container-push-base-images-develop
+name: container-push-stratos-image-develop
 
 on:
   push:
