@@ -1,7 +1,7 @@
 FROM {{BASE_IMAGE}}
 
 RUN yum install -y ca-certificates && \
-    yum install -y curl && \
+    yum install -y curl-minimal && \
     yum install -y bind-utils && \
     yum install -y hostname && \
     mkdir -p /srv && \

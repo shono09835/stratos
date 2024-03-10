@@ -1,7 +1,5 @@
 FROM {{BASE_IMAGE}}
 
-RUN echo -e "[nginx]\nname=nginx repo\nbaseurl=https://nginx.org/packages/{{NGINX_ARCH}}/\ngpgcheck=0\nenabled=1" >> /etc/yum.repos.d/nginx.repo
-
 RUN yum update -y && \
     yum install -y epel-release && \
-    yum install -y nginx apache2-utils
+    yum install -y nginx httpd-tools

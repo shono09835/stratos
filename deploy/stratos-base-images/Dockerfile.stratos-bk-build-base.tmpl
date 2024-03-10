@@ -5,13 +5,13 @@ RUN useradd -ms /bin/bash stratos && \
     chown -R stratos /home/stratos && \
     chgrp -R users /home/stratos
 
-RUN cd / && wget https://nodejs.org/dist/v12.22.9/node-v12.22.9-linux-{{NODE_ARCH}}.tar.gz && \
-    tar -xzf node-v12.22.9-linux-{{NODE_ARCH}}.tar.gz && \
-    rm node-v12.22.9-linux-{{NODE_ARCH}}.tar.gz
+RUN cd / && wget https://nodejs.org/dist/v20.11.1/node-v20.11.1-linux-{{NODE_ARCH}}.tar.gz && \
+    tar -xf node-v20.11.1-linux-{{NODE_ARCH}}.tar.gz && \
+    rm node-v20.11.1-linux-{{NODE_ARCH}}.tar.gz
 
 ENV USER=stratos
 
-ENV PATH=$PATH:/node-v12.22.9-linux-{{NODE_ARCH}}/bin
+ENV PATH=$PATH:/node-v20.11.1-linux-{{NODE_ARCH}}/bin
 
 USER stratos
 

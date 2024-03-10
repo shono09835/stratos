@@ -1,10 +1,10 @@
 FROM {{BASE_IMAGE}}
 
-RUN yum install -y ca-certificates && \
-    yum install -y curl && \
-    yum install -y openssl \
+RUN yum install -y epel-release && \
+    yum install -y ca-certificates && \
+    yum install -y curl-minimal && \
+    yum install -y openssl && \
     yum install -y openssh && \
-    yum install -y epel-release \
     yum install -y jq && \
     yum install -y bind-utils && \
     yum install -y hostname && \

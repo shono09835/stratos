@@ -7,10 +7,10 @@ YELLOW="\033[93m"
 RESET="\033[0m"
 BOLD="\033[1m"
 
-BASE_IMAGE=centos:7
+BASE_IMAGE=rockylinux:9
 REGISTRY=ghcr.io
-ORGANIZATION=anynines
-TAG=centos7
+ORGANIZATION=shono09835
+TAG=rockylinux9
 ARCH=amd64
 PROG=$(basename ${BASH_SOURCE[0]})
 SQUASH_ARGS="--squash"
@@ -19,9 +19,9 @@ DIR=$(dirname $PROG)
 
 NODE_ARCH=x64
 GO_ARCH=amd64
-MARIADB_ARCH=centos7-amd64
+MARIADB_ARCH=rocky9-amd64
 GOSU_ARCH=amd64
-NGINX_ARCH=centos/7/x86_64
+NGINX_ARCH=rocky/9/x86_64
 
 function usage {
     echo "usage: $PROG [-b BASE] [-r REGISTRY] [-o ORGANIZATION] [-t TAG] [-s] [-p] [h]"
@@ -47,9 +47,9 @@ while getopts "a:b:r:o:t:ph:s" opt ; do
                 arm64)
                     NODE_ARCH=arm64
                     GO_ARCH=arm64
-                    MARIADB_ARCH=centos7-aarch64
+                    MARIADB_ARCH=rocky9-aarch64
                     GOSU_ARCH=arm64
-                    NGINX_ARCH=centos/7/aarch64
+                    NGINX_ARCH=rocky/9/aarch64
                     ;;
                 *)
                     echo "Invalid architecture $OPTARG" >&2

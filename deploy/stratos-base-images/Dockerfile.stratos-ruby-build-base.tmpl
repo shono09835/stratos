@@ -2,7 +2,7 @@ FROM {{BASE_IMAGE}}
 
 RUN yum update -y && \
     yum install -y epel-release && \
-    yum install -y which tar curl wget gzip jq && \
+    yum install -y which tar curl-minimal wget gzip jq && \
     yum install -y ruby && \
     yum install -y make gcc-c++ && \
     yum install -y openssl-devel readline-devel && \

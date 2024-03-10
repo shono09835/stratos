@@ -3,15 +3,15 @@ FROM {{BASE_IMAGE}}
 # Default password for root of mariadb
 ENV MYSQL_ROOT_PASSWORD mysecretpassword
 
-# Install specific version of MariaDB = 10.2.34
+# Install specific version of MariaDB = 10.11
 
 # centos 7
-RUN rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB && \
-    yum-config-manager --add-repo https://mirror.mariadb.org/yum/10.2.44/{{MARIADB_ARCH}}/
+#RUN rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB && \
+#    yum-config-manager --add-repo https://mirror.mariadb.org/yum/10.2.44/{{MARIADB_ARCH}}/
 
 
 # Install packages
-RUN yum install -y mariadb-client mariadb-server
+RUN yum install -y mariadb-server
 
 RUN yum install -y net-tools wget
 
