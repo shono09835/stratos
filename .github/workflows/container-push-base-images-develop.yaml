@@ -26,3 +26,9 @@ jobs:
       - name: 'Build stratos base images'
         run: |
           ./deploy/stratos-base-images/build-base-images.sh -r ghcr.io -o ${{secrets.GH_PACKAGES_USER}} -p -s
+      - name: 'Build stratos image'
+        run: |
+          docker build -f deploy/Dockerfile.all-in-one . -t ghcr.io/${{secrets.GH_PACKAGES_USER}}/stratos:rockylinux9
+      - name: 'Push stratos image'
+        run: |
+          docker push ghcr.io/${{secrets.GH_PACKAGES_USER}}/stratos:rockylinux9
